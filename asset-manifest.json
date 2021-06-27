@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/homemade/static/css/main.167df4bd.chunk.css",
+    "main.js": "/homemade/static/js/main.50cc230e.chunk.js",
+    "main.js.map": "/homemade/static/js/main.50cc230e.chunk.js.map",
+    "runtime-main.js": "/homemade/static/js/runtime-main.8f996419.js",
+    "runtime-main.js.map": "/homemade/static/js/runtime-main.8f996419.js.map",
+    "static/css/2.5fae527a.chunk.css": "/homemade/static/css/2.5fae527a.chunk.css",
+    "static/js/2.18f68a6f.chunk.js": "/homemade/static/js/2.18f68a6f.chunk.js",
+    "static/js/2.18f68a6f.chunk.js.map": "/homemade/static/js/2.18f68a6f.chunk.js.map",
+    "index.html": "/homemade/index.html",
+    "static/css/2.5fae527a.chunk.css.map": "/homemade/static/css/2.5fae527a.chunk.css.map",
+    "static/css/main.167df4bd.chunk.css.map": "/homemade/static/css/main.167df4bd.chunk.css.map",
+    "static/js/2.18f68a6f.chunk.js.LICENSE.txt": "/homemade/static/js/2.18f68a6f.chunk.js.LICENSE.txt",
+    "static/media/LOGOLEFT.f1581582.svg": "/homemade/static/media/LOGOLEFT.f1581582.svg",
+    "static/media/baguette.2dc2816d.svg": "/homemade/static/media/baguette.2dc2816d.svg",
+    "static/media/member.scss": "/homemade/static/media/board.6db8383a.jpg",
+    "static/media/all.css": "/homemade/static/media/fa-solid-900.efbd5d20.eot",
+    "static/media/login.scss": "/homemade/static/media/handmade-bg04.9b06c29a.jpg",
+    "static/media/handmade-intro.ae6ade34.svg": "/homemade/static/media/handmade-intro.ae6ade34.svg",
+    "static/media/sidebar-booking.cc569865.png": "/homemade/static/media/sidebar-booking.cc569865.png",
+    "static/media/sidebar-course.454c5286.png": "/homemade/static/media/sidebar-course.454c5286.png",
+    "static/media/sidebar-teacher.f46b4a48.png": "/homemade/static/media/sidebar-teacher.f46b4a48.png",
+    "static/media/teacher1-1.png": "/homemade/static/media/teacher1-1.96c2a8d3.png",
+    "static/media/teacher1.png": "/homemade/static/media/teacher1.a9c0c065.png",
+    "static/media/歐培拉s.2a48371b.png": "/homemade/static/media/歐培拉s.2a48371b.png",
+    "static/media/法式經典檸檬塔s.626b4923.png": "/homemade/static/media/法式經典檸檬塔s.626b4923.png",
+    "static/media/蘭姆葡萄乳酪蛋糕s.png": "/homemade/static/media/蘭姆葡萄乳酪蛋糕s.cedb5870.png",
+    "static/media/髒髒泡芙s.8d3e72d9.png": "/homemade/static/media/髒髒泡芙s.8d3e72d9.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8f996419.js",
+    "static/css/2.5fae527a.chunk.css",
+    "static/js/2.18f68a6f.chunk.js",
+    "static/css/main.167df4bd.chunk.css",
+    "static/js/main.50cc230e.chunk.js"
+  ]
+}
