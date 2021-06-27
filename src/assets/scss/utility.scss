@@ -1,0 +1,19 @@
+.en-font {
+    font-family: "Lobster", cursive;
+}
+.btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 0;
+    color: #fff;
+    background: #f78177;
+    border-color: #f78177;
+    cursor: pointer;
+    border: none;
+    &:hover {
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,86 @@
+@import "@/assets/scss/mixin.scss";
+.teacher {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+.teacher-name {
+    font-family: "Lobster", cursive　, Arial;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 0px;
+    @include pos_center(40%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    background-color: #fff;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 100px;
+    color: #362d2b;
+    text-shadow: 0 0 10px #888;
+    .fas.fa-chevron-left,
+    .fas.fa-chevron-right {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 60px;
+    }
+    .fas.fa-chevron-left {
+        left: -80px;
+    }
+    .fas.fa-chevron-right {
+        right: -80px;
+    }
+    > div {
+        position: absolute;
+        width: 500px;
+        left: 50%;
+        top: 70%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
+
+    .teacher-content {
+        font-size: 16px;
+        white-space: pre-wrap;
+        color: #fff;
+        text-shadow: 0 0 10px rgb(0, 0, 0);
+        line-height: 1.5;
+        letter-spacing: 3px;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 15px;
+        > p {
+            font-size: 20px;
+        }
+    }
+}
+
+.teacher-details {
+    position: absolute;
+    font-size: 20px;
+    top: 60px;
+    right: 15px;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 10px;
+    min-width: 300px;
+    line-height: 2;
+    text-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+.teacher-bgCover {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+    opacity: 0.6;
+}

@@ -1,0 +1,36 @@
+.header {
+    position: fixed;
+    left: 100px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgba(3, 3, 3, 0.3);
+    padding: 0 15px;
+    height: 45px;
+    color: #fff;
+    font-size: 20px;
+    z-index: 3;
+    .header-menu {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        display: flex;
+        .en-font {
+            margin-right: 20px;
+        }
+    }
+    .menu {
+        cursor: pointer;
+    }
+    > ul {
+        display: flex;
+        li {
+            margin-right: 15px;
+            font-size: 20px;
+            a {
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,101 @@
+.course {
+    .course-filter {
+        display: flex;
+        margin-bottom: 60px;
+        > li {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 500px;
+            font-size: 48px;
+            transition: color 0.5s;
+            cursor: pointer;
+            p {
+                transform: translateY(0px);
+                transition: transform 0.5s;
+            }
+            small {
+                font-size: 16px;
+                font-weight: bold;
+            }
+            img {
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: -1;
+                opacity: 0.5;
+                transition: opacity 0.5s;
+            }
+        }
+        > li.active,
+        li:hover {
+            color: #fff;
+            p {
+                transform: translateY(30px);
+            }
+            img {
+                opacity: 1;
+            }
+        }
+    }
+    .course-info {
+        background-color: #f78177;
+        height: 100px;
+        margin-bottom: 60px;
+        .course-info-content {
+            max-width: 70%;
+            padding: 20px;
+            height: 100%;
+            margin: 0 auto;
+            border: 3px solid #000;
+            transform: translateY(-22.5px);
+            > div {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+            }
+        }
+    }
+    .course-group {
+        display: flex;
+    }
+    .course-group-filter {
+        width: 150px;
+        background: linear-gradient(135deg, #f78177 0%, #f5ddba 100%, #eabeae 100%);
+        li {
+            padding: 5px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.5;
+            cursor: pointer;
+            transition: color 0.5s;
+            &.active,
+            &:hover {
+                color: #fff;
+            }
+        }
+        li + li {
+            padding-top: 0;
+        }
+    }
+    .course-items {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        li {
+            width: 25%;
+            img {
+                display: block;
+            }
+        }
+    }
+}

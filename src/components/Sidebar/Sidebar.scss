@@ -1,0 +1,71 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100px;
+    white-space: nowrap;
+    background-color: #694c42;
+    color: #fff;
+    z-index: 2;
+    transition: width 1s;
+    .sidebar-cover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -2;
+        background-image: url("~@/assets/images/board.jpg");
+        background-position: 100px 0;
+        opacity: 0.3;
+    }
+    .fas.fa-times {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    h2 {
+        font-size: 20px;
+        line-height: 2;
+        text-align: center;
+    }
+    a {
+        display: inline-block;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        height: 60px;
+        line-height: 1.5;
+        color: #fff;
+        small {
+            font-size: 12px;
+        }
+        &:hover,&.active {
+            background-color: rgba(0, 0, 0, 0.6);
+            img {
+                opacity: 1;
+            }
+        }
+        img {
+            position: absolute;
+            filter: brightness(0.5);
+            object-fit: cover;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 1s;
+        }
+    }
+}

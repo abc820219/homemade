@@ -1,0 +1,117 @@
+.home-bg-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("~@/assets/images/handmade-bg01.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 -450px;
+    opacity: 0.5;
+    z-index: -999;
+    overflow: hidden;
+}
+
+.home-board {
+    position: absolute;
+    margin-top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    min-width: 400px;
+    min-height: 150px;
+    background-color: #f7dcdc44;
+    color: #000;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 3px;
+    box-shadow: 0px 5px 10px black;
+    text-shadow: 0px 3px 10px rgb(255, 255, 255);
+    overflow: hidden;
+    .home-board-cover {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-image: url("~@/assets/images/board.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.5;
+        z-index: -1;
+    }
+    > div {
+        padding: 15px;
+        min-height: 150px;
+        background-color: rgba(255, 255, 255, 0.575);
+    }
+    h2 {
+        font-size: 20px;
+    }
+}
+
+.home-content {
+    width: 600px;
+    @include pos_center;
+    top: 40%;
+    .home-svg {
+        animation: float 6s ease-in-out infinite;
+    }
+    .home-text {
+        @include pos_center;
+        cursor: pointer;
+        color: #8a5013;
+        font-family: "Lobster", cursive;
+        font-size: 60px;
+    }
+    .baguette {
+        cursor: pointer;
+        animation: baguetteFloat 6s ease-in-out infinite;
+        position: absolute;
+        top: 50%;
+        margin-top: -62.2px;
+        width: 100px;
+        transition: width .5s;
+    }
+    .baguette-right {
+        right: -200px;
+        transform: rotate(-100deg);
+    }
+
+    .baguette-left {
+        left: -200px;
+        transform: rotate(70deg);
+    }
+
+    .baguette:hover {
+        width: 110px;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes baguetteFloat {
+    0% {
+        top: 47.5%;
+    }
+    50% {
+        top: 52.5%;
+    }
+    100% {
+        top: 47.5%;
+    }
+}

@@ -1,0 +1,8 @@
+.homeMade {
+    > main {
+        position: relative;
+        left: 100px;
+        width: calc(100% - 100px);
+        min-height: 100vh;
+    }
+}

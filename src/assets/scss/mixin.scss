@@ -1,0 +1,46 @@
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+} //清除浮動
+
+@mixin text($font-size: 16px, $color: #000, $letter_spacing: 16px) {
+  font-size: $font-size;
+  color: $color;
+  letter-spacing: $letter_spacing;
+} //字形
+
+@mixin size($w, $h: $w) {
+  width: $w;
+  height: $h;
+} //大小
+
+@mixin flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin pos_center($top:50%,$left:50%){
+  position: absolute;
+  left: $left;
+  top: $top;
+  transform: translate(-50%, -50%);
+} //垂直水平置中
+
+@mixin pos($l, $t) {
+  left: $l;
+  top: $t;
+}
+
+@mixin layout-height-calc($footer-h, $header-h) {
+  margin-top: $header-h;
+  min-height: calc(100vh - #{$footer-h + $header-h});
+} //大小
+
+@mixin border($c, $px: 5px) {
+  border: solid $px $c;
+}

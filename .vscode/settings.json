@@ -1,0 +1,10 @@
+{
+    "vetur.validation.template": true,
+    "editor.codeActionsOnSave": {
+       "source.fixAll.eslint": true,
+    },
+    "eslint.validate": [
+       "javascript",
+       "react"
+    ],
+ }
