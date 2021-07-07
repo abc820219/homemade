@@ -1,10 +1,10 @@
+@import './media.scss';
 .home-bg-cover {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("~@/assets/images/handmade-bg01.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0 -450px;
@@ -20,7 +20,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 50%;
-    min-width: 400px;
+    min-width: 80vw;
     min-height: 150px;
     background-color: #f7dcdc44;
     color: #000;
@@ -67,6 +67,13 @@
         color: #8a5013;
         font-family: "Lobster", cursive;
         font-size: 60px;
+        a{
+            color: #8a5013;
+            transition: color .5s;
+            &:hover{
+                color: #f78177;
+            }
+        }
     }
     .baguette {
         cursor: pointer;
@@ -75,7 +82,7 @@
         top: 50%;
         margin-top: -62.2px;
         width: 100px;
-        transition: width .5s;
+        transition: width 0.5s;
     }
     .baguette-right {
         right: -200px;
@@ -89,6 +96,72 @@
 
     .baguette:hover {
         width: 110px;
+    }
+}
+
+@include desktop(){
+    .home-content {
+        width:500px;
+    }
+}
+@include desktop-middle (){
+    .home-bg-cover {
+        background-position: 0 center;
+    }
+    .home-content {
+        width:380px;
+        .baguette-right {
+            right: -120px;
+            transform: rotate(-100deg);
+        }
+    
+        .baguette-left {
+            left: -120px;
+            transform: rotate(70deg);
+        }
+    }
+    .baguette {
+        width: 70px;
+    }
+    .baguette:hover {
+        width: 90px;
+    }
+    .home-text {
+        font-size: 45px;
+    }
+    .home-board{
+        >div{
+            min-height: 30vh;
+        }
+    }
+}
+
+
+
+@include mobile(){
+    .home-board{
+        font-size: 12px;
+        min-width: 95vw;
+    }
+    .home-content {
+        width:250px;
+        font-size: 30px;
+        .baguette {
+            width: 65px;
+            margin-top: -62.2px;
+        }
+        .baguette:hover {
+            width: 75px;
+        }
+        .baguette-right {
+            right: -70px;
+            transform: rotate(-100deg);
+        }
+    
+        .baguette-left {
+            left: -70px;
+            transform: rotate(70deg);
+        }
     }
 }
 
@@ -114,4 +187,59 @@
     100% {
         top: 47.5%;
     }
+}
+
+.fade-appear {
+    opacity: 0.01;
+}
+
+.fade-appear.fade-appear-active {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+}
+
+.fade-enter {
+    opacity: 0.01;
+}
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.fade-leave {
+    opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+
+.fade-5-appear {
+    opacity: 0.01;
+}
+
+.fade-5-appear.fade-5-appear-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-5-enter {
+    opacity: 0.01;
+}
+
+.fade-5-enter.fade-5-enter-active {
+    opacity: 0.5;
+    transition: all 500ms ease-in;
+}
+
+.fade-5-leave {
+    opacity: 0.5;
+}
+
+.fade-5-leave.fade-5-leave-active {
+    opacity: 0.01;
+    transition: all 300ms ease-in;
+    background-position: 0 -550px;
 }

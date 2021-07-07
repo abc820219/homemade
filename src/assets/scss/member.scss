@@ -21,7 +21,7 @@
         padding: 20px;
         border: 1.5px solid #8a5013;
         border-bottom: 0px solid #000;
-        letter-spacing:1.5px;
+        letter-spacing: 1.5px;
     }
     .member-wrapper {
         display: flex;
@@ -34,8 +34,9 @@
             padding: 10px 20px;
             cursor: pointer;
         }
-        li:hover,li.active {
-            color: #8a5013;
+        li a:hover,
+        li a.active {
+            color: #f78177;
         }
     }
     .member-content {

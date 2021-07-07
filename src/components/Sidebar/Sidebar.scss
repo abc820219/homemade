@@ -1,3 +1,4 @@
+@import '@/assets/scss/media.scss';
 .sidebar {
     position: fixed;
     top: 0;
@@ -22,6 +23,9 @@
         background-position: 100px 0;
         opacity: 0.3;
     }
+    .far.fa-times-circle{
+        display: none;
+    }
     .fas.fa-times {
         position: absolute;
         right: 15px;
@@ -36,17 +40,17 @@
     }
     a {
         display: inline-block;
-        font-size: 16px;
+        font-size: 14px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        height: 60px;
+        height: 45px;
         line-height: 1.5;
         color: #fff;
         small {
-            font-size: 12px;
+            font-size: 10px;
         }
         &:hover,&.active {
             background-color: rgba(0, 0, 0, 0.6);
@@ -67,5 +71,30 @@
             z-index: -1;
             transition: opacity 1s;
         }
+    }
+}
+@include pad(){
+    .sidebar {
+        left: -100%;
+        width: 100vw;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        transition: left 1s;
+        a{
+            height: 20%;
+            font-size: 45px;
+        }
+        .far.fa-times-circle{
+            cursor: pointer;
+            display: block;
+            font-size: 30px;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+    }
+    .sidebar.open{
+        left: 0%;
     }
 }

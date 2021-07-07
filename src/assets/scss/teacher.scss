@@ -4,6 +4,11 @@
     width: 100%;
     min-height: 100vh;
 }
+
+.teacher-real-name {
+    text-align: center;
+}
+
 .teacher-name {
     font-family: "Lobster", cursive　, Arial;
     background-size: cover;
@@ -17,7 +22,7 @@
     background-color: #fff;
     font-weight: 400;
     font-style: normal;
-    font-size: 100px;
+    font-size: 70px;
     color: #362d2b;
     text-shadow: 0 0 10px #888;
     .fas.fa-chevron-left,
@@ -25,8 +30,12 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        transition: color 0.5s;
         cursor: pointer;
         font-size: 60px;
+        &:hover {
+            color: #f78177;
+        }
     }
     .fas.fa-chevron-left {
         left: -80px;
@@ -44,6 +53,7 @@
     }
 
     .teacher-content {
+        min-height: 150px;
         font-size: 16px;
         white-space: pre-wrap;
         color: #fff;
@@ -67,7 +77,7 @@
     font-weight: bold;
     border-radius: 3px;
     padding: 10px;
-    min-width: 300px;
+    width: 400px;
     line-height: 2;
     text-shadow: 0 0 10px rgb(255, 255, 255);
 }

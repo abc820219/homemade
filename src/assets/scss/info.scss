@@ -1,0 +1,12 @@
+.info {
+    ul > li {
+        line-height: 2;
+        &:last-child {
+            margin-bottom: 15px;
+        }
+    }
+    .btn {
+        width: 60px;
+        padding:4px;
+    }
+}

@@ -1,8 +1,17 @@
+@import '@/assets/scss/media.scss';
 .homeMade {
     > main {
         position: relative;
         left: 100px;
         width: calc(100% - 100px);
         min-height: 100vh;
+    }
+}
+@include pad(){
+    .homeMade {
+        > main {
+            left: 0px;
+            width:100%
+        }
     }
 }

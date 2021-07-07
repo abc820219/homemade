@@ -5,12 +5,21 @@ import Header from '@/components/Header/Header.jsx'
 import Sidebar from '@/components/Sidebar/Sidebar.jsx'
 import '@/assets/scss/homeMade.scss'
 class Homemade extends Component {
+  state = {
+    sidebarIsOpen: false
+  }
+
+  sidebarHandler = (boolean) => {
+    this.setState({ sidebarIsOpen: boolean })
+  }
+
   render () {
+    const { sidebarIsOpen } = this.state
     return (
       <div className="homeMade">
-        <Sidebar />
+        <Sidebar sidebarIsOpen={sidebarIsOpen} sidebarHandler={this.sidebarHandler}/>
         <main>
-          <Header />
+          <Header sidebarHandler={this.sidebarHandler}/>
           <Switch>
             <Route path="/homemade/course" component={Course}></Route>
             <Route path="/homemade/teacher" component={Teacher}></Route>

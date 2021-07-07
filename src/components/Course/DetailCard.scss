@@ -1,0 +1,62 @@
+.detailCard-cover {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 998;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.detailCard-content {
+    width: 600px;
+    position: relative;
+    padding: 5px;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    display: flex;
+    > img {
+        display: block;
+        width: 50%;
+        margin-right: 10px;
+    }
+    .far.fa-times-circle{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+        color: #f78177;
+    }
+}
+.detailCard-detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    li {
+        color: #000;
+        font-size: 14px;
+        line-height: 2;
+        letter-spacing: 1px;
+        span {
+            color: #f78177;
+            font-size: 12px;
+        }
+    }
+}
+.detailCard-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    button:first-child {
+        margin-right: 10px;
+    }
+    button{
+        a{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

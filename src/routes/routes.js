@@ -6,7 +6,7 @@ import Teacher from '@/pages/Teacher'
 import Booking from '@/pages/Booking'
 import Member from '@/pages/Member'
 import Login from '@/pages/Login'
-import Back from '@/pages/Back'
+import Info from '@/pages/Info'
 
 export { Navigation }
 
@@ -16,6 +16,6 @@ export { Teacher }
 export { Course }
 export { Booking }
 export { Member }
+export { Info }
 
 export { Login }
-export { Back }

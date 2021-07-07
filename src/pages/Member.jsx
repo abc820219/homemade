@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import '@/assets/scss/member.scss'
+import Info from '@/pages/Info.jsx'
+import { NavLink, Switch, Route } from 'react-router-dom'
+import store from '@/redux/store'
 class Member extends Component {
   render () {
     return (
@@ -7,18 +10,21 @@ class Member extends Component {
         <div className="sidebar-cover"></div>
         <main>
           <div className="member-title">
-            Hi,XXX歡迎來到會員專區。
+            {store.getState().member_name ? `Hi,${store.getState().member_name}歡迎來到會員專區。` : '尚未登入'}
           </div>
           <div className="member-wrapper">
             <ul className="member-sidebar">
-              <li>基本資訊</li>
-              <li>帳號設定</li>
-              <li>購買訂單</li>
+              <li>
+                <NavLink to="/homemade/member/" exact>基本資訊</NavLink >
+              </li>
+              <li>我的預約</li>
               <li>我的最愛</li>
               <li>購物車</li>
             </ul>
             <div className="member-content">
-              123
+              <Switch>
+                <Route path="/homemade/member/" component={Info}></Route>
+              </Switch>
             </div>
           </div>
         </main>
