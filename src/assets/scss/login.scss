@@ -1,5 +1,5 @@
 @import "@/assets/scss/mixin.scss";
-
+@import "@/assets/scss/media.scss";
 .login {
     position: relative;
     min-height: 100vh;
@@ -14,7 +14,7 @@
     padding: 15px 30px;
     border: 5px solid #e9756e;
     border-radius: 5px;
-    width: 200px;
+    width: 250px;
     background-color: rgba(255, 255, 255, 0.8);
     .login_title {
         display: flex;
@@ -93,4 +93,10 @@
     height: 300px;
     right: 10%;
     bottom: 10%;
+}
+
+@include pad() {
+    .login-pic {
+        display: none;
+    }
 }

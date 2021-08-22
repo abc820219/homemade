@@ -4,10 +4,7 @@ import introSvg from '@/assets/images/LOGOLEFT.svg'
 import { Link, withRouter } from 'react-router-dom'
 import { apiInsertMember, apiLoginMember } from '@/modules/api'
 import PropTypes from 'prop-types'
-import store from '@/redux/store'
-import {
-  setMemberInfoAction
-} from '@/redux/member_action'
+
 import Alert from '@/components/Alert/Alert.jsx'
 class Login extends Component {
   static propTypes = {
@@ -35,7 +32,6 @@ class Login extends Component {
     }).then(res => {
       const { status } = res.data
       if (status === 200) {
-        store.dispatch(setMemberInfoAction())
         Alert.show('登入成功').then(() => {
           this.props.history.push('/homemade/member')
         })
@@ -59,12 +55,14 @@ class Login extends Component {
       name: this.name.value,
       password: this.password.value
     }).then(res => {
-      const { status } = res.data
+      const { status, err } = res.data
       if (status === 200) {
         Alert.show('註冊成功，請登入').then(() => {
           this.setState({ pageType: 'login' })
         })
+        return res.render
       }
+      Alert.show(err)
     })
   }
 

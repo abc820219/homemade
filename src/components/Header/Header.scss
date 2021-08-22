@@ -1,7 +1,7 @@
 @import '@/assets/scss/media.scss';
 .header {
     position: fixed;
-    left: 100px;
+    left: 140px;
     right: 0;
     display: flex;
     align-items: center;
@@ -10,7 +10,7 @@
     padding: 0 15px;
     height: 45px;
     color: #fff;
-    font-size: 20px;
+    font-size: 26px;
     z-index: 3;
     .fas.fa-bars{
         display: none;

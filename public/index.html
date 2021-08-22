@@ -1,19 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Homemade</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <script src="https://js.tappaysdk.com/tpdirect/v5.7.0"></script>
+  <title>Homemade</title>
+</head>
+<style>
+  @keyframes anim-loading-pill {
+    0% {
+      transform: translateY(-10%);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(15%) scale(0.9);
+      opacity: 0.9;
+    }
+  }
+
+  .loading {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+  
+  .loading-open{
+    display: flex;
+  }
+
+  .loading_pill {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    animation: anim-loading-pill 750ms ease-in infinite alternate;
+  }
+
+  .loading_pill:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .loading_pill:nth-last-child(1) {
+    animation-delay: -250s;
+  }
+
+  .loading_pill:nth-last-child(2) {
+    animation-delay: -500s;
+  }
+
+  .loading_pill:nth-last-child(3) {
+    animation-delay: -750s;
+  }
+
+</style>
+
+<body>
+  <div class="loading">
+    <span class="loading_pill"></span>
+    <span class="loading_pill"></span>
+    <span class="loading_pill"></span>
+  </div>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <div class="loading loading-open">
+      <span class="loading_pill"></span>
+      <span class="loading_pill"></span>
+      <span class="loading_pill"></span>
+    </div>
+  </div>
+</body>
+
 </html>

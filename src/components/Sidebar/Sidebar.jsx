@@ -1,23 +1,48 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import './Sidebar.scss'
 import booking from '@/assets/images/sidebar-booking.png'
 import course from '@/assets/images/sidebar-course.png'
 import teacher from '@/assets/images/sidebar-teacher.png'
 import store from '@/redux/store'
 import PropTypes from 'prop-types'
+import {
+  setMemberInfoAction
+} from '@/redux/member_action'
+let unsubscribe = null
 class Sidebar extends Component {
   static propTypes = {
     sidebarIsOpen: PropTypes.bool,
-    sidebarHandler: PropTypes.func
+    sidebarHandler: PropTypes.func,
+    history: PropTypes.object
+  }
+
+  componentDidMount () {
+    if (this.props.history.location.pathname !== '/homemade/member') {
+      store.dispatch(setMemberInfoAction())
+    }
+    unsubscribe = store.subscribe(() => {
+      this.setState({})
+    })
+  }
+
+  componentWillUnmount () {
+    unsubscribe()
   }
 
   render () {
     const { sidebarIsOpen, sidebarHandler } = this.props
+    const { userInfo } = store.getState()
     return (
       <div className={sidebarIsOpen ? 'sidebar open' : 'sidebar'}>
         <i className="far fa-times-circle" onClick={() => sidebarHandler(false)}></i>
         <div className="sidebar-cover"></div>
+        <NavLink to="/homemade/home" exact>
+          <p>
+            烘焙首頁
+          </p>
+          <small>(首頁)</small>
+        </NavLink >
         <NavLink to="/homemade/" exact>
           <p>
             烘焙時光
@@ -46,7 +71,7 @@ class Sidebar extends Component {
           <img src={course} alt="" />
         </NavLink >
         {
-          store.getState().member_sid && <NavLink to="/homemade/member">
+          userInfo && userInfo.member_sid && <NavLink to="/homemade/member">
             <p>
               烘焙學員
             </p>
@@ -60,4 +85,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar
+export default withRouter(Sidebar)

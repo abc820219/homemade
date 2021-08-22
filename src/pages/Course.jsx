@@ -5,9 +5,10 @@ import cakes from '@/assets/images/蘭姆葡萄乳酪蛋糕s.png'
 import puffs from '@/assets/images/髒髒泡芙s.png'
 import tarts from '@/assets/images/法式經典檸檬塔s.png'
 import { Link } from 'react-router-dom'
-import { apiGetCourse } from '@/modules/api'
+import { apiGetCourse, apiRemoveLikeCourse, apiInsertLikeCourse } from '@/modules/api'
 import { CSSTransitionGroup } from 'react-transition-group'
 import DetailCard from '@/components/Course/DetailCard'
+import store from '@/redux/store'
 class Course extends Component {
   state = {
     courseList: [],
@@ -30,11 +31,65 @@ class Course extends Component {
     apiGetCourse().then(res => {
       const { status } = res.data
       if (status === 200) {
-        this.setState({ courseList: res.data.data })
+        const { course_like: courseLike } = store.getState()
+        const { data } = res.data
+        const courseList = data.map(item => {
+          const isLiked = courseLike && courseLike.some(like => like.course_sid === item.course_sid && like.status === 1)
+          return {
+            ...item,
+            isLiked: isLiked
+          }
+        })
+        this.setState({ courseList: courseList })
       }
     }).catch(err => {
       console.log(err)
     })
+  }
+
+  courseDetailHandler = (boolean) => {
+    const newCourseDetail = this.state.courseDetail
+    newCourseDetail.detail.isLiked = !boolean
+    this.setState({ courseDetail: newCourseDetail }
+    )
+  }
+
+  isLikeHandler = (id, isLiked) => {
+    const _this = this
+    if (isLiked) {
+      apiRemoveLikeCourse({
+        courseId: id
+      }).then(res => {
+        const { status } = res.data
+        if (status === 200) {
+          isLikedStateHandler(false)
+        }
+      }).catch(err => { console.log(err) })
+    } else {
+      apiInsertLikeCourse({
+        courseId: id
+      }).then(res => {
+        const { status } = res.data
+        if (status === 200) {
+          isLikedStateHandler(true)
+        }
+      }).catch(err => { console.log(err) })
+    }
+
+    function isLikedStateHandler (bool) {
+      const courseListArr = _this.state.courseList.map(course => {
+        if (course.course_sid === id) {
+          return {
+            ...course,
+            isLiked: bool
+          }
+        }
+        return {
+          ...course
+        }
+      })
+      _this.setState({ courseList: courseListArr })
+    }
   }
 
   detailCardHandler = (course) => {
@@ -67,14 +122,13 @@ class Course extends Component {
     if (key !== 'All') {
       infoList[this.state.filterKeys[key]].classList.add('active')
       sidBarList[this.state.filterKeys[key] - 1].classList.add('active')
-    } else {
-      sidBarList[0].classList.add('active')
     }
     this.setState({ currentKey: key })
   }
 
   render () {
     let { courseList, currentKey, info, courseDetail } = this.state
+    const { userInfo } = store.getState()
     if (currentKey !== 'All') {
       courseList = courseList.filter(course => {
         return course.course_kid === currentKey
@@ -108,7 +162,7 @@ class Course extends Component {
           component='div'
         >
           {
-            (courseDetail.open && courseDetail.detail) && <DetailCard courseDetail={courseDetail} closeDetailCardHandler={this.closeDetailCardHandler}></DetailCard>
+            (courseDetail.open && courseDetail.detail) && <DetailCard courseDetail={courseDetail} closeDetailCardHandler={this.closeDetailCardHandler} isLikeHandler={this.isLikeHandler} courseDetailHandler={this.courseDetailHandler}></DetailCard>
           }
         </CSSTransitionGroup>
         <ul className="course-filter">
@@ -178,9 +232,11 @@ class Course extends Component {
                       <h3 className="course-items-bar-name">課程：{course.course_name}</h3>
                     </div>
                     <div>
-                      <i className="fas fa-heart" title="加到最愛"></i>
-                      <Link to={`/homemade/booking?course=${course.course_sid}`}>
-                        <i className="fas fa-bookmark" title="前往預約"></i>
+                      {
+                       userInfo && course && <i className="fas fa-heart" style={course.isLiked ? { color: '#f78177' } : {}} onClick={() => this.isLikeHandler(course.course_sid, course.isLiked)}></i>
+                      }
+                      <Link to={'/homemade/booking'}>
+                          <i className="fas fa-bookmark" title="前往預約"></i>
                       </Link>
                     </div>
                   </div>

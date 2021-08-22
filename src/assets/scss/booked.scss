@@ -1,0 +1,71 @@
+.booked {
+    padding: 60px 15px 0;
+    hr {
+        width: 100%;
+        height: 1px;
+        background-color: #000;
+        border: 1px solid #000;
+    }
+    .booked-flow {
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        white-space: nowrap;
+        align-items: center;
+        margin-bottom: 10px;
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .step::after {
+            margin-top: 5px;
+            text-align: center;
+            display: block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+        .step1::after {
+            content: "1";
+        }
+        .step2::after {
+            content: "2";
+        }
+        .step1.step-active::after {
+            background-color: #f78177;
+        }
+        .step2.step-active::after {
+            background-color: #f78177;
+        }
+    }
+    li {
+        margin-bottom: 15px;
+    }
+    .total {
+        margin-bottom: 10px;
+    }
+    .options {
+        display: flex;
+    }
+    button {
+        width: 100px;
+        margin-right: 10px;
+    }
+    h5 {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .booking-card-info {
+        >div {
+            height: 30px;
+            display: flex;
+            align-items: center;
+            >div {
+                height: 30px;
+            }
+        }
+    }
+}

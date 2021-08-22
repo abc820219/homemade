@@ -2,6 +2,9 @@ body {
     font-family: Arial;
     background: linear-gradient(135deg, #eec1b1 0%, #f5ddba 100%, #eabeae 100%);
 }
+*{
+    box-sizing: border-box;
+}
 
 a {
     text-decoration: none;
@@ -11,7 +14,7 @@ img {
     display: inline-block;
     width: 100%;
 }
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
     /*隱藏滾輪*/
     display: none;
 }

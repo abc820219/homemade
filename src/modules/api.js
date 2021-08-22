@@ -89,3 +89,67 @@ export const apiLogoutMember = (data) =>
 export const apiUpdateMember = (data) =>
   MemberRequest.post('/updateMember', data)
 // -----------------------------------------
+
+const LikeRequest = axios.create({
+  baseURL: '/like/'
+})
+LikeRequest.defaults.headers.common.Pragma = 'no-cache'
+LikeRequest.interceptors.request.use(
+  function (config) {
+    loadingStartHandler()
+    return config
+  },
+  function (error) {
+    loadingOverHandler()
+    return Promise.reject(error)
+  }
+)
+LikeRequest.interceptors.response.use(
+  function (response) {
+    loadingOverHandler()
+    return response
+  },
+  function (error) {
+    loadingOverHandler()
+    return Promise.reject(error)
+  }
+)
+export const apiRemoveLikeTeacher = (data) =>
+  LikeRequest.post('/removeLikeTeacher', data)
+export const apiInsertLikeTeacher = (data) =>
+  LikeRequest.post('/insertLikeTeacher', data)
+export const apiRemoveLikeCourse = (data) =>
+  LikeRequest.post('/removeLikeCourse', data)
+export const apiInsertLikeCourse = (data) =>
+  LikeRequest.post('/insertLikeCourse', data)
+// ----------------------------------------
+const BookRequest = axios.create({
+  baseURL: '/book/'
+})
+BookRequest.defaults.headers.common.Pragma = 'no-cache'
+BookRequest.interceptors.request.use(
+  function (config) {
+    loadingStartHandler()
+    return config
+  },
+  function (error) {
+    loadingOverHandler()
+    return Promise.reject(error)
+  }
+)
+BookRequest.interceptors.response.use(
+  function (response) {
+    loadingOverHandler()
+    return response
+  },
+  function (error) {
+    loadingOverHandler()
+    return Promise.reject(error)
+  }
+)
+export const apiGetBooking = (data) =>
+  BookRequest.post('/getBooking', data)
+export const apiGetOneBooking = (data) =>
+  BookRequest.post('/getOneBooking', data)
+export const apiInsertBooking = (data) =>
+  BookRequest.post('/insertBooking', data)

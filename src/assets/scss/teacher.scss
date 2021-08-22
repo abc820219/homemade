@@ -1,4 +1,5 @@
 @import "@/assets/scss/mixin.scss";
+@import "@/assets/scss/media.scss";
 .teacher {
     position: relative;
     width: 100%;
@@ -10,11 +11,11 @@
 }
 
 .teacher-name {
+    @include pos_center(40%);
     font-family: "Lobster", cursive　, Arial;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 0px;
-    @include pos_center(40%);
     width: 300px;
     height: 300px;
     border-radius: 50%;
@@ -82,6 +83,20 @@
     text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
+.teacher-details-options {
+    display: flex;
+    align-items: center;
+    i:first-child {
+        margin-right: 10px;
+    }
+    i {
+        cursor: pointer;
+    }
+    i:last-child:hover {
+        color: #f78177;
+    }
+}
+
 .teacher-bgCover {
     position: absolute;
     background-repeat: no-repeat;
@@ -93,4 +108,20 @@
     top: 0;
     z-index: -1;
     opacity: 0.6;
+}
+
+@include desktop() {
+    .teacher-details {
+        font-size: 18px;
+    }
+}
+@include pad() {
+    .teacher-name {
+        @include pos_center(50%);
+    }
+    .teacher-details {
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }

@@ -1,245 +1,186 @@
-@import './media.scss';
-.home-bg-cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+@import "./mixin.scss";
+@import "./media.scss";
+.home {
+    background: url("https://images.pexels.com/photos/271458/pexels-photo-271458.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=2000")
+        center center no-repeat;
+    background-attachment: fixed;
     background-size: cover;
+    section:first-child {
+        min-height: 100vh;
+    }
+}
+
+.home-banner {
+    background-image: url("https://static.wixstatic.com/media/82fcd3_b176d276fee14ce5b59b94ab3ed98de5~mv2.jpg/v1/fill/w_1225,h_871,al_b,q_85,usm_0.66_1.00_0.01/82fcd3_b176d276fee14ce5b59b94ab3ed98de5~mv2.webp");
     background-repeat: no-repeat;
-    background-position: 0 -450px;
-    opacity: 0.5;
-    z-index: -999;
-    overflow: hidden;
+    background-size: cover;
+    background-position: center bottom;
+    position: relative;
 }
 
-.home-board {
+.home-banner-content {
     position: absolute;
-    margin-top: auto;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-    min-width: 80vw;
-    min-height: 150px;
-    background-color: #f7dcdc44;
-    color: #000;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    top: 30%;
+    left: 60px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    line-height: 1.2;
     font-weight: bold;
-    line-height: 1.5;
-    letter-spacing: 3px;
-    box-shadow: 0px 5px 10px black;
-    text-shadow: 0px 3px 10px rgb(255, 255, 255);
-    overflow: hidden;
-    .home-board-cover {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        background-image: url("~@/assets/images/board.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        opacity: 0.5;
-        z-index: -1;
-    }
-    > div {
-        padding: 15px;
-        min-height: 150px;
-        background-color: rgba(255, 255, 255, 0.575);
-    }
-    h2 {
-        font-size: 20px;
+    button {
+        margin-top: 15px;
+        width: 100px;
     }
 }
 
-.home-content {
-    width: 600px;
-    @include pos_center;
-    top: 40%;
-    .home-svg {
-        animation: float 6s ease-in-out infinite;
+.home-course,
+.home-teacher {
+    position: relative;
+    h5 {
+        text-align: center;
+        font-size: 28px;
+        padding: 15px;
+        color: #fff;
+        font-weight: bold;
+        background-color: #ee8d84d5;
     }
-    .home-text {
-        @include pos_center;
-        cursor: pointer;
-        color: #8a5013;
-        font-family: "Lobster", cursive;
-        font-size: 60px;
-        a{
-            color: #8a5013;
-            transition: color .5s;
-            &:hover{
-                color: #f78177;
+}
+
+.home-course .content {
+    padding: 30px;
+    ul {
+        display: flex;
+    }
+    li {
+        position: relative;
+        width: 100%;
+        p {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            text-align: center;
+            line-height: 2;
+            z-index: 1;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+            text-shadow: 1px 1px 5px rgb(0, 0, 0);
+        }
+        img {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+    }
+}
+
+.home-teacher .content {
+    padding: 30px;
+    > ul > li {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        img {
+            width: 150px;
+            height: 150px;
+            display: block;
+            object-fit: cover;
+            object-position: top;
+        }
+        .teacher-content {
+            width: 300px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.2;
+        }
+        &:nth-child(even) {
+            transform: translateX(100px);
+        }
+        &:nth-child(odd) {
+            transform: translateX(-100px);
+        }
+    }
+    li + li {
+        margin-top: 10px;
+    }
+    li:nth-child(even) {
+        img {
+            order: 1;
+        }
+    }
+    li:nth-child(odd) {
+        .teacher-content {
+            order: 1;
+        }
+    }
+}
+
+.home-info {
+    background-color: #f78177;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    color: #fff;
+    > div {
+        i {
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        i + i {
+            margin-left: 10px;
+        }
+    }
+    label {
+        display: flex;
+        width: 250px;
+        button {
+            border: 1px solid #fff;
+        }
+    }
+    ul {
+        line-height: 1.5;
+    }
+}
+
+@include desktop-middle() {
+    .home-info {
+        flex-direction: column;
+        font-size: 14px;
+        > div {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@include pad() {
+    .home-teacher .content {
+        > ul > li {
+            &:nth-child(even) {
+                transform: translateX(0px);
+            }
+            &:nth-child(odd) {
+                transform: translateX(0px);
             }
         }
     }
-    .baguette {
-        cursor: pointer;
-        animation: baguetteFloat 6s ease-in-out infinite;
-        position: absolute;
-        top: 50%;
-        margin-top: -62.2px;
-        width: 100px;
-        transition: width 0.5s;
-    }
-    .baguette-right {
-        right: -200px;
-        transform: rotate(-100deg);
-    }
-
-    .baguette-left {
-        left: -200px;
-        transform: rotate(70deg);
-    }
-
-    .baguette:hover {
-        width: 110px;
-    }
 }
 
-@include desktop(){
-    .home-content {
-        width:500px;
-    }
-}
-@include desktop-middle (){
-    .home-bg-cover {
-        background-position: 0 center;
-    }
-    .home-content {
-        width:380px;
-        .baguette-right {
-            right: -120px;
-            transform: rotate(-100deg);
-        }
-    
-        .baguette-left {
-            left: -120px;
-            transform: rotate(70deg);
+@include mobile() {
+    .home-course .content {
+        ul {
+            display: flex;
+            flex-direction: column;
         }
     }
-    .baguette {
-        width: 70px;
+    .home-banner-content {
+        left: 10px;
+        right: 10px;
     }
-    .baguette:hover {
-        width: 90px;
-    }
-    .home-text {
-        font-size: 45px;
-    }
-    .home-board{
-        >div{
-            min-height: 30vh;
-        }
-    }
-}
-
-
-
-@include mobile(){
-    .home-board{
-        font-size: 12px;
-        min-width: 95vw;
-    }
-    .home-content {
-        width:250px;
-        font-size: 30px;
-        .baguette {
-            width: 65px;
-            margin-top: -62.2px;
-        }
-        .baguette:hover {
-            width: 75px;
-        }
-        .baguette-right {
-            right: -70px;
-            transform: rotate(-100deg);
-        }
-    
-        .baguette-left {
-            left: -70px;
-            transform: rotate(70deg);
-        }
-    }
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(10px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(10px);
-    }
-}
-
-@keyframes baguetteFloat {
-    0% {
-        top: 47.5%;
-    }
-    50% {
-        top: 52.5%;
-    }
-    100% {
-        top: 47.5%;
-    }
-}
-
-.fade-appear {
-    opacity: 0.01;
-}
-
-.fade-appear.fade-appear-active {
-    opacity: 1;
-    transition: opacity 1s ease-in;
-}
-
-.fade-enter {
-    opacity: 0.01;
-}
-.fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-}
-
-.fade-leave {
-    opacity: 1;
-}
-
-.fade-leave.fade-leave-active {
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
-}
-
-
-.fade-5-appear {
-    opacity: 0.01;
-}
-
-.fade-5-appear.fade-5-appear-active {
-    opacity: 1;
-    transition: opacity 0.5s ease-in;
-}
-
-.fade-5-enter {
-    opacity: 0.01;
-}
-
-.fade-5-enter.fade-5-enter-active {
-    opacity: 0.5;
-    transition: all 500ms ease-in;
-}
-
-.fade-5-leave {
-    opacity: 0.5;
-}
-
-.fade-5-leave.fade-5-leave-active {
-    opacity: 0.01;
-    transition: all 300ms ease-in;
-    background-position: 0 -550px;
 }

@@ -4,6 +4,7 @@ module.exports = {
     es2021: true,
     node: true
   },
+  parser: 'babel-eslint',
   extends: [
     'plugin:react/recommended',
     'standard'
@@ -20,6 +21,7 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': 0,
-    'no-undef': 0
+    'no-undef': 0,
+    'react/no-render-return-value':0
   }
 }

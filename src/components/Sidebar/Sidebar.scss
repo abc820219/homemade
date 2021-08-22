@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    width: 100px;
+    width: 140px;
     white-space: nowrap;
     background-color: #694c42;
     color: #fff;
@@ -20,7 +20,7 @@
         left: 0;
         z-index: -2;
         background-image: url("~@/assets/images/board.jpg");
-        background-position: 100px 0;
+        background-position: 140px 0;
         opacity: 0.3;
     }
     .far.fa-times-circle{
@@ -40,7 +40,7 @@
     }
     a {
         display: inline-block;
-        font-size: 14px;
+        font-size: 16px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -83,12 +83,12 @@
         transition: left 1s;
         a{
             height: 20%;
-            font-size: 45px;
+            font-size: 35px;
         }
         .far.fa-times-circle{
             cursor: pointer;
             display: block;
-            font-size: 30px;
+            font-size: 26px;
             position: absolute;
             right: 15px;
             top: 15px;

@@ -1,0 +1,15 @@
+.book-card{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    padding: 10px;
+    border: 1px solid #8a5013;
+    border-bottom: none;
+    li+li{
+        margin-top: 10px;
+    }
+}
+
+.book-card:last-child{
+    border-bottom: 1px solid #8a5013 !important;
+}

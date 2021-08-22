@@ -1,5 +1,6 @@
+@import "./media.scss";
 .member {
-    padding-top: 80px;
+    padding: 60px 10px;
     .sidebar-cover {
         position: absolute;
         top: 0;
@@ -11,7 +12,7 @@
         opacity: 0.3;
     }
     > main {
-        max-width: 1200px;
+        max-width: 1024px;
         margin: 0 auto;
         background-color: rgba(255, 255, 255, 0.85);
     }
@@ -44,5 +45,48 @@
         flex: 1;
         padding: 20px;
         min-height: calc(100vh - 270px);
+    }
+}
+
+@include desktop-middle() {
+    .member {
+        padding: 45px 0 0 0;
+        > main {
+            min-height: calc(100vh - 45px);
+            .member-wrapper {
+                min-height: calc(100vh - 45px);
+            }
+            .member-sidebar {
+                position: fixed;
+                display: flex;
+                justify-content: center;
+                background-color: #fff;
+                z-index: 1;
+                bottom: 0;
+                left: 100px;
+                right: 0;
+                font-size: 14px;
+                li {
+                    padding: 5px 10px;
+                }
+            }
+        }
+    }
+}
+@include pad() {
+    .member {
+        > main {
+            .member-sidebar {
+                left: 0px;
+                background-color: #FEF9F4;
+            }
+        }
+    }
+}
+@include mobile() {
+    .member {
+        .member-title {
+            font-size: 16px;
+        }
     }
 }

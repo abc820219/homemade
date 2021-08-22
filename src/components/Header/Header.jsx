@@ -7,10 +7,21 @@ import {
   setMember
 } from '@/redux/member_action'
 import PropTypes from 'prop-types'
+let unsubscribe = null
 class Header extends Component {
   static propTypes = {
     history: PropTypes.object,
     sidebarHandler: PropTypes.func
+  }
+
+  componentDidMount () {
+    unsubscribe = store.subscribe(() => {
+      this.setState({})
+    })
+  }
+
+  componentWillUnmount () {
+    unsubscribe()
   }
 
   logoutHandler = () => {
@@ -25,6 +36,7 @@ class Header extends Component {
 
   render () {
     const { sidebarHandler } = this.props
+    const { userInfo } = store.getState()
     return (
       <header className="header">
         <i className="fas fa-bars" onClick={() => sidebarHandler(true)}></i>
@@ -35,7 +47,7 @@ class Header extends Component {
         </div>
         <ul>
           <li className='en-font'>
-            {store.getState().member_sid
+            {userInfo && userInfo.member_sid
               ? <p className="header-logout" onClick={this.logoutHandler}>
                 logout
               </p>
@@ -43,8 +55,7 @@ class Header extends Component {
                 login
               </Link>}
           </li>
-          {store.getState().member_sid && <li> <Link className="far fa-user-circle" to="/homemade/member"></Link></li>}
-          <li><i className="fas fa-shopping-cart"></i> </li>
+          {userInfo && userInfo.member_sid && <li> <Link className="far fa-user-circle" to="/homemade/member"></Link></li>}
         </ul>
       </header>
     )

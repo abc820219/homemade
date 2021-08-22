@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import '@/assets/scss/teacher.scss'
 import { CSSTransitionGroup } from 'react-transition-group'
 import { Link } from 'react-router-dom'
-import { apiGetTeachers } from '@/modules/api'
+import { apiGetTeachers, apiInsertLikeTeacher, apiRemoveLikeTeacher } from '@/modules/api'
+import store from '@/redux/store'
 let canChangFlag = true
+
 class Teacher extends Component {
   state = {
     teacherInfoArr: [],
@@ -12,26 +14,65 @@ class Teacher extends Component {
 
   componentDidMount () {
     apiGetTeachers().then(res => {
-      console.log(res)
       const { status } = res.data
       if (status === 200) {
+        const { teacher_like: teacherLike } = store.getState()
         const { data } = res.data
         const teacherData = data.map(info => {
+          const isLiked = teacherLike && teacherLike.some(like => like.teacher_sid === info.teacher_sid && like.status === 1)
           return {
             id: info.teacher_sid,
             name: info.teacher_name,
             picB: info.teacher_big_img,
             picS: info.teacher_small_img,
             skill: info.teacher_skill,
-            detail: info.teacher_detail
+            detail: info.teacher_detail,
+            isLiked: isLiked
           }
         })
-        console.log(teacherData)
         this.setState({
           teacherInfoArr: teacherData
         })
       }
     })
+  }
+
+  isLikeHandler = (id, isLiked) => {
+    const _this = this
+    if (isLiked) {
+      apiRemoveLikeTeacher({
+        teacherId: id
+      }).then(res => {
+        const { status } = res.data
+        if (status === 200) {
+          isLikedStateHandler(false)
+        }
+      }).catch(err => { console.log(err) })
+    } else {
+      apiInsertLikeTeacher({
+        teacherId: id
+      }).then(res => {
+        const { status } = res.data
+        if (status === 200) {
+          isLikedStateHandler(true)
+        }
+      }).catch(err => { console.log(err) })
+    }
+
+    function isLikedStateHandler (bool) {
+      const teacherInfoArr = _this.state.teacherInfoArr.map(info => {
+        if (info.id === id) {
+          return {
+            ...info,
+            isLiked: bool
+          }
+        }
+        return {
+          ...info
+        }
+      })
+      _this.setState({ teacherInfoArr: teacherInfoArr })
+    }
   }
 
   contentHandler = (type) => {
@@ -53,6 +94,7 @@ class Teacher extends Component {
 
   render () {
     const { teacherInfoArr, index } = this.state
+    const { userInfo } = store.getState()
     return (
       <div className="teacher">
         <CSSTransitionGroup
@@ -87,19 +129,20 @@ class Teacher extends Component {
             teacherInfoArr.map((info, i) => {
               return (
                 index === i && <ul key={info.name}>
-                  <li>
+                  <li className="teacher-details-name">
                     老師 : {info.name}
                   </li>
                   <li>
                     老師專長 :
                     {info.skill}
                   </li>
-                  <li>
-                    <button className="btn">
-                      <Link to={`/homemade/booking?teacher=${info.id}`}>
-                        前往預約
-                      </Link>
-                    </button>
+                  <li className="teacher-details-options">
+                    {
+                      userInfo && userInfo.member_sid && <i className="fas fa-heart" style={info.isLiked ? { color: '#f78177' } : {}} onClick={() => this.isLikeHandler(info.id, info.isLiked)}></i>
+                    }
+                    <Link to={`/homemade/booking?teacher=${info.id}`}>
+                      <i className="fas fa-bookmark"></i>
+                    </Link>
                   </li>
                 </ul>)
             })
