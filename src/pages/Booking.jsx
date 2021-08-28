@@ -188,7 +188,7 @@ class Booking extends Component {
                   <div className="options">
                     <i className="fas fa-info-circle" onClick={() => this.selectedBooking(bookList[`${i}T0`])}></i>
                     {
-                      userInfo && (<Link to={`/homemade/booking/${bookList.booking_sid}`}>
+                      userInfo && (<Link to={`/homemade/booking/${bookList[`${i}T0`].booking_sid}`}>
                         <i className="fas fa-money-bill-wave"></i>
                       </Link>)
                     }
